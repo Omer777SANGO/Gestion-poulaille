@@ -41,6 +41,7 @@ class Pin
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="pin_image", fileNameProperty="imageName")
+     * @Assert\Image(maxSize="8M")
      *
      * @var File|null
      */
@@ -81,7 +82,7 @@ class Pin
         return $this;
     }
 
-    /**
+/**
  * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
  * of 'UploadedFile' is injected into this setter to trigger the update. If this
  * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
