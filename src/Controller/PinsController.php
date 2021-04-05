@@ -34,12 +34,13 @@ class PinsController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-         $em->persist($pin);
-         $em->flush();
+          $pin->setUser($this->getUser());
+          $em->persist($pin);
+          $em->flush();
 
-         $this->addFlash('success', 'Pin successfully created!');
+          $this->addFlash('success', 'Pin successfully created!');
 
-         return $this->redirectToRoute('app_home');
+          return $this->redirectToRoute('app_home');
        }
 
        return $this->render('pins/create.html.twig', [
