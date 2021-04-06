@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class RegistrationFormType extends AbstractType
@@ -21,7 +20,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class)
-            ->add('lastName', TextareaType::class)
+            ->add('lastName', TextType::class)
             ->add('email', EmailType::class)
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

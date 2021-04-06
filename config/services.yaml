@@ -5,6 +5,10 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
 
+    # declaration de paramètre pour utlisation de contener
+    app.mail_from_name: 'Panterest'
+    app.mail_from_address: 'hello@panterest.com'
+
 services:
     # default configuration for services in *this* file
     _defaults:
