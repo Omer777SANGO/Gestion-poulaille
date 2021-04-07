@@ -208,9 +208,16 @@ class User implements UserInterface
         return $this;
     }
 
+    // Methode premettant de retourner le mon complet de l'utilisateur
     public function getFullName(): string
     {
         return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
+    // Methode pour créer l'avatar de l'utilsateur et hasher l'email
+    public function gravatar(?int $size = 100)
+    {
+            return sprintf('https://www.gravatar.com/avatar/%s/?s=%d', md5(strtolower(trim($this->getEmail()))), $size);
     }
 
     public function isVerified(): bool
