@@ -217,7 +217,7 @@ class User implements UserInterface
     // Methode pour créer l'avatar de l'utilsateur et hasher l'email
     public function gravatar(?int $size = 100)
     {
-            return sprintf('https://www.gravatar.com/avatar/%s/?s=%d', md5(strtolower(trim($this->getEmail()))), $size);
+            return sprintf('https://www.gravatar.com/avatar/%s?s=%d', md5(strtolower(trim($this->getEmail()))), $size);
     }
 
     public function isVerified(): bool
