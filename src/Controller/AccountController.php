@@ -27,13 +27,15 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/edit", name="app_account_edit", methods={"GET", "POST"})
+     * @Route("/edit", name="app_account_edit", methods={"GET", "PATCH"})
      */
     public function edit(Request $request, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(UserFormType::class, $user);
+        $form = $this->createForm(UserFormType::class, $user, [
+            'method' => 'PATCH'
+        ]);
 
         $form->handleRequest($request);
 
