@@ -54,15 +54,16 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/change_password", name="app_account_change_password", methods={"GET", "POST"})
+     * @Route("/change_password", name="app_account_change_password", methods={"GET", "PATCH"})
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function changePassword(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = $this->getUser();
             // Ppour passer les options en 3e arguments ['current_password_is_required' => true
-        $form = $this->createForm(ChangePasswordFormType::class, null,[
-            'current_password_is_required' => true
+        $form = $this->createForm(ChangePasswordFormType::class, null, [
+            'current_password_is_required' => true,
+            'method' => 'PATCH'
         ]);
 
         $form->handleRequest($request);
